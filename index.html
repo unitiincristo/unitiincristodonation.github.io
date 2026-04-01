@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000; /* Sfondo pagina totalmente nero */
+            background-color: #000000;
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,111 +16,89 @@
             min-height: 100vh;
         }
         .card {
-            background-color: #1a1a1a; /* Sfondo centrale grigio scuro */
+            background-color: #1a1a1a;
             width: 100%;
             max-width: 400px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             text-align: center;
-            padding: 40px 25px; /* Aumentato padding superiore */
+            padding: 40px 25px;
             border: none;
         }
-        
-        /* Contenitore del logo circolare staccato dai bordi */
+
         .logo-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-        
-        /* Maschera circolare per l'immagine rettangolare */
+
         .circular-logo {
-            width: 120px; /* Dimensione del cerchio */
-            height: 120px;
-            border-radius: 50%; /* Questa è la 'magia' che crea il cerchio */
-            background-image: url('copertina.jpg'); /* INSERISCI QUI IL NOME DEL TUO FILE IMMAGINE */
-            background-size: cover; /* Centra l'immagine rettangolare nel cerchio */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image: url('copertina.jpg');
+            background-size: cover;
             background-position: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            border: 2px solid #333; /* Un piccolo bordo scuro per definire il cerchio */
+            border: 2px solid #333;
         }
-        
-        .content {
-            padding: 0;
-        }
-        h1 {
-            font-size: 26px;
-            color: #ffffff;
-            margin: 0 0 10px 0;
-            /* Rimosso text-transform: uppercase; */
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-        h2 {
-            font-size: 20px;
-            color: #aaaaaa; /* Grigio più scuro per sottotitolo */
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-        
+
+        h1 { font-size: 24px; color: #ffffff; margin: 0 0 5px 0; letter-spacing: 1px; font-weight: bold; }
+        h2 { font-size: 16px; color: #aaaaaa; margin-bottom: 30px; font-weight: 300; }
+
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 16px 0;
-            margin-bottom: 15px;
+            padding: 15px 0;
+            margin-bottom: 12px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             border: none;
             cursor: pointer;
         }
-        .btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
+        .btn-paypal { background-color: #0070ba; color: white; }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .btn img { width: 20px; height: 20px; margin-right: 10px; }
+
+        /* Contenitore Dati Bancari */
+        .iban-section {
+            margin-top: 25px;
+            text-align: left;
         }
-        
-        /* PayPal: Colore Originale */
-        .btn-paypal {
-            background-color: #0070ba;
-            color: white;
+        .copy-box {
+            background-color: #252525;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: 0.2s;
+            position: relative;
         }
+        .copy-box:active { background-color: #333; }
+        .label { font-size: 10px; color: #888; text-transform: uppercase; display: block; margin-bottom: 4px; }
+        .value { font-family: monospace; color: #fff; font-size: 13px; display: block; word-break: break-all; }
         
-        /* Bonifico: Stile Palette (Bianco su Grigio Scuro) */
-        .btn-bank {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        
-        .btn img {
-            width: 22px;
-            height: 22px;
-            margin-right: 12px;
-        }
-        
-        .iban-container {
+        /* Sezione QR Code */
+        .qr-section {
             margin-top: 30px;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.03); /* Sfondo ultra-leggero per l'IBAN */
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            border-top: 1px solid #333;
         }
-        .iban-text {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            display: block;
-            margin-bottom: 8px;
-            color: #ffffff;
-            letter-spacing: 1px;
-            word-break: break-all;
-        }
-        .copy-hint {
-            font-size: 11px;
-            color: #888;
+        .qr-title { font-size: 12px; color: #aaa; margin-bottom: 15px; display: block; }
+        .qr-image {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
         }
     </style>
 </head>
@@ -130,7 +108,7 @@
     <div class="logo-container">
         <div class="circular-logo"></div>
     </div>
-    
+
     <div class="content">
         <h1>Uniti In Cristo</h1>
         <h2>Dona ora</h2>
@@ -140,32 +118,36 @@
             PayPal
         </a>
 
-        <button onclick="copyData()" class="btn btn-bank">
-            <img src="https://img.icons8.com/metro/26/ffffff/bank.png" alt="Bonifico">
-            Bonifico
-        </button>
+        <div class="iban-section">
+            <div class="copy-box" onclick="copyText('IT79T0760112100001049342510', 'IBAN')">
+                <span class="label">Tocca per copiare IBAN</span>
+                <strong class="value">IT79 T076 0112 1000 0104 9342 510</strong>
+            </div>
 
-        <div class="iban-container">
-            <strong class="iban-text" id="ibanText">IT79 T076 0112 1000 0104 9342 510</strong>
-            <span class="copy-hint" id="copyHint">
-                BIC: BPPIITRRXXX<br>
-                Intestatario: ASSOCIAZIONE CRISTIANA EVANGELICA IN CRISTO
-            </span>
+            <div class="copy-box" onclick="copyText('ASSOCIAZIONE CRISTIANA EVANGELICA IN CRISTO', 'Intestatario')">
+                <span class="label">Tocca per copiare Intestatario</span>
+                <strong class="value">ASSOCIAZIONE CRISTIANA EVANGELICA...</strong>
+            </div>
+
+            <div class="copy-box" onclick="copyText('BPPIITRRXXX', 'BIC')">
+                <span class="label">Tocca per copiare BIC (SWIFT)</span>
+                <strong class="value">BPPIITRRXXX</strong>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <span class="qr-title">Scansiona con l'App della tua banca per compilare il bonifico in automatico</span>
+            <div class="qr-image">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BCD%0A002%0A1%0ASCT%0ABPPIITRRXXX%0AASSOCIAZIONE%20CRISTIANA%20EVANGELICA%20IN%20CRISTO%0AIT79T0760112100001049342510%0A%0A%0A%0AOfferta" alt="QR Bonifico" style="width: 100%; height: 100%;">
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    function copyData() {
-        const iban = document.getElementById('ibanText').innerText;
-        const name = "ASSOCIAZIONE CRISTIANA EVANGELICA IN CRISTO";
-        const bic = "BPPIITRRXXX";
-        
-        // Copia IBAN pulito (senza spazi) e intestatario
-        const fullData = "Intestatario: " + name + "\nIBAN: " + iban + "\nBIC: " + bic;
-        
-        navigator.clipboard.writeText(fullData).then(() => {
-            alert("Dati bancari copiati negli appunti!\n\nOra puoi incollarli nella tua app bancaria.");
+    function copyText(text, label) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert(label + " copiato!");
         });
     }
 </script>
