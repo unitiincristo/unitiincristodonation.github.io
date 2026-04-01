@@ -53,7 +53,6 @@
             font-size: 26px;
             color: #ffffff;
             margin: 0 0 10px 0;
-            /* Rimosso text-transform: uppercase; */
             letter-spacing: 1px;
             font-weight: bold;
         }
@@ -141,7 +140,7 @@
         </a>
 
         <button onclick="copyData()" class="btn btn-bank">
-            <img src="https://img.icons8.com/material-rounded/24/ffffff/bank.png" alt="Bonifico">
+            <img src="https://img.icons8.com/metro/26/ffffff/bank.png" alt="Bonifico">
             Bonifico
         </button>
 
