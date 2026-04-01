@@ -53,6 +53,7 @@
             font-size: 26px;
             color: #ffffff;
             margin: 0 0 10px 0;
+            /* Rimosso text-transform: uppercase; */
             letter-spacing: 1px;
             font-weight: bold;
         }
@@ -134,7 +135,7 @@
         <h1>Uniti In Cristo</h1>
         <h2>Dona ora</h2>
 
-        <a href="https://paypal.me/DanieleLonghin" target="_blank" class="btn btn-paypal">
+        <a href="https://paypal.me/unitincristo" target="_blank" class="btn btn-paypal">
             <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal">
             PayPal
         </a>
@@ -145,8 +146,11 @@
         </button>
 
         <div class="iban-container">
-            <span class="iban-text" id="ibanText">DE48 1001 1001 2621 6020 42</span>
-            <span class="copy-hint">Intestatario: Daniele Longhin</span>
+            <strong class="iban-text" id="ibanText">IT79 T076 0112 1000 0104 9342 510</strong>
+            <span class="copy-hint" id="copyHint">
+                BIC: BPPIITRRXXX<br>
+                Intestatario: ASSOCIAZIONE CRISTIANA EVANGELICA IN CRISTO
+            </span>
         </div>
     </div>
 </div>
@@ -154,10 +158,14 @@
 <script>
     function copyData() {
         const iban = document.getElementById('ibanText').innerText;
-        const info = "Intestatario: Daniele Longhin\nIBAN: " + iban;
+        const name = "ASSOCIAZIONE CRISTIANA EVANGELICA IN CRISTO";
+        const bic = "BPPIITRRXXX";
         
-        navigator.clipboard.writeText(info).then(() => {
-            alert("Dati bancari copiati negli appunti!");
+        // Copia IBAN pulito (senza spazi) e intestatario
+        const fullData = "Intestatario: " + name + "\nIBAN: " + iban + "\nBIC: " + bic;
+        
+        navigator.clipboard.writeText(fullData).then(() => {
+            alert("Dati bancari copiati negli appunti!\n\nOra puoi incollarli nella tua app bancaria.");
         });
     }
 </script>
