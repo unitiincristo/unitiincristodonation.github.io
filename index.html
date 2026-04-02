@@ -71,17 +71,21 @@
             margin-top: 25px;
             text-align: left;
         }
-        .copy-box {
+        .copy-box, .info-box {
             background-color: #252525;
             padding: 12px 15px;
             border-radius: 10px;
             margin-bottom: 10px;
-            cursor: pointer;
             border: 1px solid #333;
-            transition: 0.2s;
             position: relative;
         }
+        .copy-box {
+            cursor: pointer;
+            transition: 0.2s;
+        }
         .copy-box:active { background-color: #333; }
+        .copy-box:hover { border-color: #444; }
+        
         .label { font-size: 10px; color: #888; text-transform: uppercase; display: block; margin-bottom: 4px; }
         .value { font-family: monospace; color: #fff; font-size: 13px; display: block; word-break: break-all; }
         
@@ -133,12 +137,17 @@
                 <span class="label">Tocca per copiare BIC (SWIFT)</span>
                 <strong class="value">BPPIITRRXXX</strong>
             </div>
+
+            <div class="info-box">
+                <span class="label">Causale Bonifico</span>
+                <strong class="value">Offerta Libera</strong>
+            </div>
         </div>
 
         <div class="qr-section">
             <span class="qr-title">Scansiona con l'App della tua banca per compilare il bonifico in automatico</span>
             <div class="qr-image">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BCD%0A002%0A1%0ASCT%0ABPPIITRRXXX%0AASSOCIAZIONE%20CRISTIANA%20EVANGELICA%20IN%20CRISTO%0AIT79T0760112100001049342510%0A%0A%0A%0AOfferta" alt="QR Bonifico" style="width: 100%; height: 100%;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BCD%0A002%0A1%0ASCT%0ABPPIITRRXXX%0AASSOCIAZIONE%20CRISTIANA%20EVANGELICA%20IN%20CRISTO%0AIT79T0760112100001049342510%0A%0A%0A%0AOfferta%20Libera" alt="QR Bonifico" style="width: 100%; height: 100%;">
             </div>
         </div>
     </div>
